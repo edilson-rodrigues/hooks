@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
-import PageTitle from '../../components/layout/PageTitle'
+import React, {useState} from 'react';
+import PageTitle from '../../components/layout/PageTitle';
 import SectionTitle from "../../components/layout/SectionTitle";
 
 const UseState = () => {
     const [count, setCount] = useState(0)
+    const [name, setName] = useState("Inicial...")
     return (
         <div className="UseState">
             <PageTitle
@@ -36,6 +37,13 @@ const UseState = () => {
                 </div>
             </div>
             <SectionTitle title={"Exercício #02"}/>
+            <input
+                type="text"
+                className="input"
+                value={name}
+                onChange={e => setName(e.target.value)}
+            />
+            <span className="text">{name}</span>
         </div>
     )
 }
