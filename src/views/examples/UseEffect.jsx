@@ -4,27 +4,45 @@ import SectionTitle from "../../components/layout/SectionTitle";
 
 const UseEffect = (props) => {
 
+    //começo ex. #01
+
+    const [number, setNumber] = useState(1)
+    const [fatorial, setFatorial] = useState(1)
+
+
     function calcFatorial(num) {
         const n = parseInt(num)
 
         if (n < 0) return -1;
         if (n === 0) return 1;
-        return calcFatorial(n - 1) * n;
-    }
 
-    const [number, setNumber] = useState(1)
-    const [fatorial, setFatorial] = useState(1)
+       return calcFatorial(n - 1) * n;
+
+    }
 
     useEffect(function () {
         setFatorial(calcFatorial(number));
+        // eslint-disable-next-line
     }, [number]);
 
-    useEffect(function (){
-        if(fatorial > 10){
+
+    useEffect(function () {
+        if (fatorial > 10) {
             document.title = "Eita!!!"
         }
-    },[fatorial])
+    }, [fatorial])
 
+    //fim ex. #01
+
+    //começo ex... #02
+
+   const [status, setStatus] = useState('Par')
+
+    useEffect(function () {
+        setStatus(number % 2 === 0 ? "Par" : "Impar");
+    }, [number])
+
+    //fim ex... #02
     return (
         <div className="UseEffect">
             <PageTitle
@@ -51,7 +69,12 @@ const UseEffect = (props) => {
             </div>
             <SectionTitle title="Exercício #02"/>
             <div className="center">
-                Olá
+                <div>
+                    <span className="text">Status: </span>
+                    <span className="text red">{
+                        status
+                    }</span>
+                </div>
             </div>
         </div>
     )
